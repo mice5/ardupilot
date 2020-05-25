@@ -100,7 +100,12 @@ static const uint32_t flash_memmap[STM32_FLASH_NPAGES] = { KB(16), KB(16), KB(16
 #endif
 
 #elif defined(STM32F7)
-#if BOARD_FLASH_SIZE == 1024
+#if BOARD_FLASH_SIZE == 512
+#define STM32_FLASH_NPAGES 8
+static const uint32_t flash_memmap[STM32_FLASH_NPAGES] = { KB(16), KB(16), KB(16), KB(16), KB(64),
+                                                           KB(128), KB(128), KB(128) };
+
+#elif BOARD_FLASH_SIZE == 1024
 #define STM32_FLASH_NPAGES  8
 static const uint32_t flash_memmap[STM32_FLASH_NPAGES] = { KB(32), KB(32), KB(32), KB(32), KB(128), KB(256), KB(256), KB(256) };
 
@@ -128,8 +133,6 @@ static const uint32_t flash_memmap[STM32_FLASH_NPAGES] = { KB(32), KB(32), KB(32
 #endif
 
 #ifdef STORAGE_FLASH_PAGE
-static_assert(STORAGE_FLASH_PAGE < STM32_FLASH_NPAGES,
-              "STORAGE_FLASH_PAGE out of range");
 #endif
 
 // keep a cache of the page addresses

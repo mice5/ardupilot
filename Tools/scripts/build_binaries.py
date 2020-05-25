@@ -605,6 +605,7 @@ is bob we will attempt to checkout bob-AVR'''
                 "CubeOrange",
                 "CubeYellow",
                 "R9Pilot",
+                "Candy",
                 # SITL targets
                 "SITL_x86_64_linux_gnu",
                 "SITL_arm_linux_gnueabihf",
